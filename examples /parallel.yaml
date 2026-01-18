@@ -1,0 +1,23 @@
+agents:
+  - id: backend
+    role: Backend Engineer
+    goal: Design API
+    model: openai
+
+  - id: frontend
+    role: Frontend Engineer
+    goal: Design UI
+    model: gemini
+
+  - id: reviewer
+    role: Tech Lead
+    goal: Review both
+    model: openai
+
+workflow:
+  type: parallel
+  branches:
+    - backend
+    - frontend
+  then:
+    agent: reviewer

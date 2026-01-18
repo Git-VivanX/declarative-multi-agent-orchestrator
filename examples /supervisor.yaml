@@ -1,0 +1,16 @@
+agents:
+  - id: root
+    role: Coordinator
+    goal: Combine work
+    model: openai
+
+  - id: helper
+    role: Assistant
+    goal: Do subtasks
+    model: gemini
+
+workflow:
+  type: supervisor
+  root: root
+  sub_agents:
+    - helper

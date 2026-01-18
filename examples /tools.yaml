@@ -1,0 +1,11 @@
+agents:
+  - id: analyst
+    role: Data Analyst
+    goal: Analyze numbers
+    tools: [python, calculator, memory]
+    model: openai
+
+workflow:
+  type: sequential
+  steps:
+    - agent: analyst

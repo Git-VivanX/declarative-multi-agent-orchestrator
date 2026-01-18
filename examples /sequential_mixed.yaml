@@ -1,0 +1,20 @@
+agents:
+  - id: gpt_agent
+    name: GPT Agent
+    role: Storyteller
+    goal: Write the beginning of a story about a space adventure.
+    model: openai
+    tools: []
+
+  - id: gemini_agent
+    name: Gemini Agent
+    role: Editor
+    goal: Continue the story and add a plot twist.
+    model: gemini
+    tools: []
+
+workflow:
+  type: sequential
+  steps:
+    - agent: gpt_agent
+    - agent: gemini_agent

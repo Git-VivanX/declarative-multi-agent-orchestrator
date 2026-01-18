@@ -1,0 +1,29 @@
+agents:
+  - id: gpt_agent
+    name: GPT Agent
+    role: Analyst
+    goal: Analyze the data
+    model: openai
+    tools: []
+
+  - id: gemini_agent
+    name: Gemini Agent
+    role: Reviewer
+    goal: Review the analysis
+    model: gemini
+    tools: []
+
+  - id: summarizer
+    name: Summarizer
+    role: Summarizer
+    goal: Summarize findings
+    model: openai
+    tools: []
+
+workflow:
+  type: parallel
+  branches:
+    - gpt_agent
+    - gemini_agent
+  then:
+    agent: summarizer
