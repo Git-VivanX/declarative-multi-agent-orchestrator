@@ -31,6 +31,17 @@ else:
 async def run(yaml_file):
     config = load_yaml(yaml_file)
 
+    # Validation
+    if "agents" not in config:
+        raise ValueError("Configuration missing 'agents' section")
+    if "workflow" not in config:
+        raise ValueError("Configuration missing 'workflow' section")
+    
+    wf_type = config["workflow"].get("type")
+    valid_types = ["sequential", "parallel", "supervisor"]
+    if wf_type not in valid_types:
+        raise ValueError(f"Invalid workflow type: '{wf_type}'. Must be one of {valid_types}")
+
     agents = {}
     for a in config["agents"]:
         agents[a["id"]] = Agent(
